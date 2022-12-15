@@ -1,15 +1,14 @@
 import React, {useState} from "react";
 
-function Stock({ name, price, ticker, onToggle }) {
+function Stock({ name, price, ticker, myKey, onToggle }) {
 
   const [inPortfolio, setInPortfolio] = useState(false)
 
   function handleStockClick(){
     setInPortfolio(!inPortfolio)
-    onToggle(!inPortfolio);
+    onToggle(myKey);
   }
 
-  console.log(name, "in portfolio? ", inPortfolio)
 
   return (
     <div onClick={handleStockClick}>

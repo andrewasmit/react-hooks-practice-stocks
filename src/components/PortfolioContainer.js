@@ -1,19 +1,18 @@
 import React from "react";
 import Stock from "./Stock";
 
-function PortfolioContainer({ stocks, portfolioState }) {
+function PortfolioContainer({ portfolio }) {
 
-const portfolioStocksToDisplay= stocks.map(stock=>{
-  return portfolioState ? <Stock 
-                          key={stock.id}
-                          myKey={stock.id}
-                          name={stock.name}
-                          price={stock.price}
-                          ticker={stock.ticker}
-                        /> : null
+const portfolioStocksToDisplay= portfolio.map(stock=>{
+  return  <Stock 
+              key={stock.id}
+              myKey={stock.id}
+              name={stock.name}
+              price={stock.price}
+              ticker={stock.ticker}
+          />
 })
 
-console.log("IN PORTFOLIO" , portfolioState)
 
   return (
     <div>

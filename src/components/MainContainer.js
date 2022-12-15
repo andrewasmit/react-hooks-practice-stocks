@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 function MainContainer() {
 
   const [stocks, setStocks]= useState([])
+  const [portfolio, setPortfolio] = useState([]);
 
 useEffect(()=>{
   fetch("http://localhost:3001/stocks")
@@ -13,8 +14,10 @@ useEffect(()=>{
   .then(data=>setStocks(data));
 }, [])
 
-function handlePortfolioChange(stateOfStock){
-  return stateOfStock;
+function handlePortfolioToggle(idOfToggledStock){
+  console.log("In Main: " , idOfToggledStock)
+  const addedStock = stocks.filter(stock=>stock.id===idOfToggledStock)
+  setPortfolio(addedStock)
 }
 
 
@@ -24,10 +27,10 @@ function handlePortfolioChange(stateOfStock){
       <SearchBar />
       <div className="row">
         <div className="col-8">
-          <StockContainer stocks={stocks}  onToggle={handlePortfolioChange}/>
+          <StockContainer stocks={stocks}  onToggle={handlePortfolioToggle}/>
         </div>
         <div className="col-4">
-          <PortfolioContainer portfolioState={handlePortfolioChange}/>
+          <PortfolioContainer stocks={stocks} portfolio={portfolio} portfolioState={handlePortfolioToggle}/>
         </div>
       </div>
     </div>
