@@ -1,13 +1,13 @@
-import React, {useState} from "react";
+import React from "react";
 
 function Stock({ name, price, ticker, myKey, onToggle }) {
 
-  const [inPortfolio, setInPortfolio] = useState(false)
 
   function handleStockClick(){
-    setInPortfolio(!inPortfolio)
+    console.log('Toggle Clicked for # ', myKey);
     onToggle(myKey);
   }
+
 
 
   return (
